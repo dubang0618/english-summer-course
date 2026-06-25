@@ -373,6 +373,117 @@
         display: none;
       }
     }
+
+    @media (orientation: landscape) and (max-height: 620px) {
+      body {
+        overflow: hidden;
+      }
+
+      .deck {
+        height: 100svh;
+        padding: 10px 14px 74px;
+      }
+
+      .slide {
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        padding: 18px 24px;
+      }
+
+      .content {
+        gap: 12px;
+        align-content: center;
+      }
+
+      .topline {
+        font-size: 16px;
+      }
+
+      h1 {
+        font-size: clamp(42px, 7vw, 74px);
+      }
+
+      h2 {
+        font-size: clamp(32px, 5vw, 58px);
+      }
+
+      p {
+        font-size: clamp(17px, 2.1vw, 24px);
+      }
+
+      .big-word {
+        font-size: clamp(54px, 8vw, 92px);
+      }
+
+      .word-grid {
+        gap: 8px;
+      }
+
+      .word-card {
+        min-height: 72px;
+        padding: 8px;
+        font-size: clamp(20px, 2.6vw, 28px);
+      }
+
+      .phrase-list {
+        gap: 8px;
+      }
+
+      .phrase {
+        min-height: 48px;
+        padding: 10px 14px;
+        font-size: clamp(20px, 2.8vw, 32px);
+      }
+
+      .phrase span {
+        font-size: clamp(14px, 1.8vw, 20px);
+      }
+
+      .bubble {
+        min-height: 130px;
+        padding: 18px;
+        gap: 8px;
+        font-size: clamp(22px, 3vw, 34px);
+      }
+
+      .bubble small {
+        font-size: 18px;
+      }
+
+      .mission-card {
+        padding: 18px;
+        gap: 10px;
+      }
+
+      .mission-line {
+        font-size: clamp(24px, 3.2vw, 42px);
+      }
+
+      .controls {
+        left: 12px;
+        right: 12px;
+        bottom: 8px;
+        gap: 8px;
+      }
+
+      button {
+        min-height: 44px;
+        padding: 8px 14px;
+        font-size: 17px;
+      }
+
+      .counter {
+        font-size: 17px;
+        padding: 8px 12px;
+      }
+
+      .hint {
+        top: 12px;
+        right: 16px;
+        font-size: 13px;
+      }
+    }
   </style>
 </head>
 <body>
