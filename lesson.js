@@ -7,9 +7,18 @@ function showSlide(nextIndex) {
   index = Math.max(0, Math.min(slides.length - 1, nextIndex));
   slides.forEach((slide, slideIndex) => {
     slide.classList.toggle("active", slideIndex === index);
-    if (slideIndex === index) slide.scrollTop = 0;
+    slide.scrollTop = 0;
   });
   counter.textContent = `${index + 1} / ${slides.length}`;
+  window.scrollTo(0, 0);
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+  requestAnimationFrame(() => {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    slides[index].scrollTop = 0;
+  });
 }
 
 function speak(text) {
@@ -55,6 +64,12 @@ document.getElementById("fullscreen").addEventListener("click", startLandscapeMo
 document.getElementById("startLandscape").addEventListener("click", startLandscapeMode);
 document.getElementById("dismissLandscape").addEventListener("click", () => {
   document.getElementById("landscapeHelp").classList.add("dismissed");
+});
+window.addEventListener("load", () => {
+  window.scrollTo(0, 0);
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+  slides.forEach((slide) => { slide.scrollTop = 0; });
 });
 document.addEventListener("keydown", (event) => {
   if (event.key === "ArrowRight" || event.key === " ") showSlide(index + 1);
