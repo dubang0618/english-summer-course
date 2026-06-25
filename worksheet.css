@@ -1,6 +1,7 @@
 ﻿:root { --ink: #18231d; --muted: #5d665f; --line: #222; --soft: #f5f1e8; --green: #1f6f55; }
 * { box-sizing: border-box; }
 body { margin: 0; color: var(--ink); font-family: "Microsoft YaHei", "Trebuchet MS", sans-serif; background: #ddd; }
+.home-link { position: fixed; left: 14px; top: 14px; z-index: 5; color: white; background: var(--green); border-radius: 8px; padding: 10px 14px; font-size: 15px; font-weight: 900; text-decoration: none; box-shadow: 0 8px 20px rgba(0,0,0,0.16); }
 .page { width: 210mm; min-height: 297mm; margin: 0 auto; background: white; padding: 13mm 14mm; }
 header { display: flex; justify-content: space-between; gap: 20px; border-bottom: 3px solid var(--ink); padding-bottom: 8px; margin-bottom: 12px; }
 h1 { margin: 0; font-size: 28px; line-height: 1.1; }
@@ -21,4 +22,4 @@ th { background: var(--soft); font-weight: 800; }
 .signature { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 12px; font-size: 15px; }
 .signature div { border-bottom: 1.5px solid var(--ink); min-height: 24px; }
 @page { size: A4; margin: 0; }
-@media print { body { background: white; } .page { width: auto; min-height: auto; margin: 0; padding: 11mm 13mm; } }
+@media print { body { background: white; } .home-link { display: none; } .page { width: auto; min-height: auto; margin: 0; padding: 11mm 13mm; } }

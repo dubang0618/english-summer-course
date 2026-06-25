@@ -24,6 +24,21 @@
       background: #ddd;
     }
 
+    .home-link {
+      position: fixed;
+      left: 14px;
+      top: 14px;
+      z-index: 5;
+      color: white;
+      background: var(--green);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 15px;
+      font-weight: 900;
+      text-decoration: none;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.16);
+    }
+
     .page {
       width: 210mm;
       min-height: 297mm;
@@ -170,6 +185,10 @@
         background: white;
       }
 
+      .home-link {
+        display: none;
+      }
+
       .page {
         width: auto;
         min-height: auto;
@@ -180,6 +199,7 @@
   </style>
 </head>
 <body>
+  <a class="home-link" href="index.html">返回首页</a>
   <main class="page">
     <header>
       <div>

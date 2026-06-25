@@ -331,6 +331,25 @@
       z-index: 2;
     }
 
+    .home-link {
+      position: fixed;
+      left: 22px;
+      top: 18px;
+      z-index: 30;
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      padding: 9px 14px;
+      color: var(--ink);
+      background: rgba(255, 250, 240, 0.94);
+      border: 2px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 8px 20px rgba(23, 33, 27, 0.12);
+      font-size: 16px;
+      font-weight: 900;
+      text-decoration: none;
+    }
+
     @media (max-width: 820px) {
       body {
         overflow: auto;
@@ -361,6 +380,14 @@
       button {
         font-size: 16px;
         padding: 10px 12px;
+      }
+
+      .home-link {
+        left: 14px;
+        top: 12px;
+        min-height: 38px;
+        padding: 7px 10px;
+        font-size: 14px;
       }
     }
 
@@ -499,6 +526,14 @@
         padding: 8px 12px;
       }
 
+      .home-link {
+        left: 12px;
+        top: 8px;
+        min-height: 36px;
+        padding: 6px 10px;
+        font-size: 14px;
+      }
+
       .hint {
         top: 12px;
         right: 16px;
@@ -508,6 +543,7 @@
   </style>
 </head>
 <body>
+  <a class="home-link" href="index.html">返回首页</a>
   <aside class="landscape-help" id="landscapeHelp" aria-label="landscape prompt">
     <div class="landscape-card">
       <div class="phone-icon" aria-hidden="true"></div>
