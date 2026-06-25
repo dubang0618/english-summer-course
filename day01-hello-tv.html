@@ -329,7 +329,7 @@
       <div class="hint">点击单词可播放发音</div>
       <div class="content">
         <div class="topline">Look and Say</div>
-        <div class="big-word" data-say="Hello">Hello</div>
+        <div class="big-word" data-say="Hello" data-audio="audio/day01/hello.wav">Hello</div>
         <p>看到别人时，可以说：Hello.</p>
       </div>
     </section>
@@ -339,16 +339,16 @@
       <div class="content">
         <div class="topline">Today's Words</div>
         <div class="word-grid">
-          <div class="word-card" data-say="hello">hello<br>你好</div>
-          <div class="word-card" data-say="hi">hi<br>嗨</div>
-          <div class="word-card" data-say="good">good<br>好的</div>
-          <div class="word-card" data-say="morning">morning<br>早晨</div>
-          <div class="word-card" data-say="I">I<br>我</div>
-          <div class="word-card" data-say="am">am<br>是</div>
-          <div class="word-card" data-say="name">name<br>名字</div>
-          <div class="word-card" data-say="my">my<br>我的</div>
-          <div class="word-card" data-say="you">you<br>你</div>
-          <div class="word-card" data-say="meet">meet<br>遇见</div>
+          <div class="word-card" data-say="hello" data-audio="audio/day01/hello.wav">hello<br>你好</div>
+          <div class="word-card" data-say="hi" data-audio="audio/day01/hi.wav">hi<br>嗨</div>
+          <div class="word-card" data-say="good" data-audio="audio/day01/good.wav">good<br>好的</div>
+          <div class="word-card" data-say="morning" data-audio="audio/day01/morning.wav">morning<br>早晨</div>
+          <div class="word-card" data-say="I" data-audio="audio/day01/i.wav">I<br>我</div>
+          <div class="word-card" data-say="am" data-audio="audio/day01/am.wav">am<br>是</div>
+          <div class="word-card" data-say="name" data-audio="audio/day01/name.wav">name<br>名字</div>
+          <div class="word-card" data-say="my" data-audio="audio/day01/my.wav">my<br>我的</div>
+          <div class="word-card" data-say="you" data-audio="audio/day01/you.wav">you<br>你</div>
+          <div class="word-card" data-say="meet" data-audio="audio/day01/meet.wav">meet<br>遇见</div>
         </div>
       </div>
     </section>
@@ -358,11 +358,11 @@
       <div class="content">
         <div class="topline">Listen and Repeat</div>
         <div class="phrase-list">
-          <div class="phrase" data-say="Hello."><strong>Hello.</strong><span>你好。</span></div>
-          <div class="phrase" data-say="Hi."><strong>Hi.</strong><span>嗨。</span></div>
-          <div class="phrase" data-say="Good morning."><strong>Good morning.</strong><span>早上好。</span></div>
-          <div class="phrase" data-say="I am a student."><strong>I am a student.</strong><span>我是一名学生。</span></div>
-          <div class="phrase" data-say="My name is Tom."><strong>My name is ______.</strong><span>我的名字是……</span></div>
+          <div class="phrase" data-say="Hello." data-audio="audio/day01/hello.wav"><strong>Hello.</strong><span>你好。</span></div>
+          <div class="phrase" data-say="Hi." data-audio="audio/day01/hi.wav"><strong>Hi.</strong><span>嗨。</span></div>
+          <div class="phrase" data-say="Good morning." data-audio="audio/day01/good-morning.wav"><strong>Good morning.</strong><span>早上好。</span></div>
+          <div class="phrase" data-say="I am a student." data-audio="audio/day01/i-am-a-student.wav"><strong>I am a student.</strong><span>我是一名学生。</span></div>
+          <div class="phrase" data-say="My name is Tom." data-audio="audio/day01/my-name-is-tom.wav"><strong>My name is ______.</strong><span>我的名字是……</span></div>
         </div>
       </div>
     </section>
@@ -371,11 +371,11 @@
       <div class="content">
         <div class="topline">Mini Dialogue</div>
         <div class="dialogue">
-          <div class="bubble" data-say="Hello. My name is Tom.">
+          <div class="bubble" data-say="Hello. My name is Tom." data-audio="audio/day01/hello-my-name-is-tom.wav">
             <small>A</small>
             Hello.<br>My name is Tom.
           </div>
-          <div class="bubble" data-say="Hi. My name is Lily. Nice to meet you.">
+          <div class="bubble" data-say="Hi. My name is Lily. Nice to meet you." data-audio="audio/day01/hi-my-name-is-lily-nice-to-meet-you.wav">
             <small>B</small>
             Hi.<br>My name is Lily.<br>Nice to meet you.
           </div>
@@ -390,9 +390,9 @@
         <h2>My name is ______.</h2>
         <p>把空格换成自己的名字，连续说3遍。</p>
         <div class="phrase-list">
-          <div class="phrase" data-say="My name is Jack."><strong>My name is Jack.</strong><span>换名字</span></div>
-          <div class="phrase" data-say="My name is Lily."><strong>My name is Lily.</strong><span>换名字</span></div>
-          <div class="phrase" data-say="My name is Mike."><strong>My name is Mike.</strong><span>换名字</span></div>
+          <div class="phrase" data-say="My name is Jack." data-audio="audio/day01/my-name-is-jack.wav"><strong>My name is Jack.</strong><span>换名字</span></div>
+          <div class="phrase" data-say="My name is Lily." data-audio="audio/day01/my-name-is-lily.wav"><strong>My name is Lily.</strong><span>换名字</span></div>
+          <div class="phrase" data-say="My name is Mike." data-audio="audio/day01/my-name-is-mike.wav"><strong>My name is Mike.</strong><span>换名字</span></div>
         </div>
       </div>
     </section>
@@ -429,6 +429,8 @@
       counter.textContent = `${index + 1} / ${slides.length}`;
     }
 
+    const audioPlayer = new Audio();
+
     function speak(text) {
       if (!("speechSynthesis" in window)) return;
       window.speechSynthesis.cancel();
@@ -437,6 +439,24 @@
       utterance.rate = 0.78;
       utterance.pitch = 1;
       window.speechSynthesis.speak(utterance);
+    }
+
+    async function playAudio(item) {
+      const audioPath = item.dataset.audio;
+      if (!audioPath) {
+        speak(item.dataset.say);
+        return;
+      }
+
+      try {
+        window.speechSynthesis?.cancel();
+        audioPlayer.pause();
+        audioPlayer.currentTime = 0;
+        audioPlayer.src = audioPath;
+        await audioPlayer.play();
+      } catch (error) {
+        speak(item.dataset.say);
+      }
     }
 
     document.getElementById("prev").addEventListener("click", () => showSlide(index - 1));
@@ -448,7 +468,7 @@
     });
 
     document.querySelectorAll("[data-say]").forEach((item) => {
-      item.addEventListener("click", () => speak(item.dataset.say));
+      item.addEventListener("click", () => playAudio(item));
     });
   </script>
 </body>
