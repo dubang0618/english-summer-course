@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
@@ -237,6 +237,61 @@
       z-index: 10;
     }
 
+    .landscape-help {
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      display: none;
+      place-items: center;
+      padding: 24px;
+      background: rgba(23, 33, 27, 0.86);
+      text-align: center;
+    }
+
+    .landscape-card {
+      width: min(420px, 100%);
+      display: grid;
+      gap: 14px;
+      background: var(--paper);
+      color: var(--ink);
+      border: 3px solid var(--yellow);
+      border-radius: 8px;
+      padding: 28px 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .phone-icon {
+      width: 54px;
+      height: 88px;
+      margin: 0 auto;
+      border: 5px solid var(--green);
+      border-radius: 12px;
+      transform: rotate(90deg);
+      position: relative;
+    }
+
+    .phone-icon::after {
+      content: "";
+      position: absolute;
+      width: 16px;
+      height: 4px;
+      border-radius: 999px;
+      background: var(--green);
+      left: 50%;
+      bottom: 8px;
+      transform: translateX(-50%);
+    }
+
+    .landscape-card strong {
+      font-size: 26px;
+    }
+
+    .landscape-card span {
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
     button {
       border: 0;
       border-radius: 8px;
@@ -308,9 +363,29 @@
         padding: 10px 12px;
       }
     }
+
+    @media (orientation: portrait) and (max-width: 920px) {
+      .landscape-help {
+        display: grid;
+      }
+
+      .landscape-help.dismissed {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
+  <aside class="landscape-help" id="landscapeHelp" aria-label="landscape prompt">
+    <div class="landscape-card">
+      <div class="phone-icon" aria-hidden="true"></div>
+      <strong>请把手机横过来</strong>
+      <span>横屏后再投到电视，课件会更大、更清楚。</span>
+      <button id="startLandscape" type="button">全屏横屏上课</button>
+      <button class="secondary" id="dismissLandscape" type="button">先继续</button>
+    </div>
+  </aside>
+
   <main class="deck">
     <section class="slide active">
       <div class="hint">按空格/方向键翻页</div>
@@ -412,7 +487,8 @@
 
   <nav class="controls" aria-label="课件控制">
     <button class="secondary" id="prev">上一页</button>
-    <div class="counter" id="counter">1 / 7</div>
+        <button class="secondary" id="fullscreen">全屏横屏</button>
+<div class="counter" id="counter">1 / 7</div>
     <button id="next">下一页</button>
   </nav>
 
@@ -461,6 +537,31 @@
 
     document.getElementById("prev").addEventListener("click", () => showSlide(index - 1));
     document.getElementById("next").addEventListener("click", () => showSlide(index + 1));
+    document.getElementById("fullscreen").addEventListener("click", startLandscapeMode);
+    document.getElementById("startLandscape").addEventListener("click", startLandscapeMode);
+    document.getElementById("dismissLandscape").addEventListener("click", () => {
+      document.getElementById("landscapeHelp").classList.add("dismissed");
+    });
+
+    async function startLandscapeMode() {
+      document.getElementById("landscapeHelp").classList.add("dismissed");
+
+      try {
+        if (!document.fullscreenElement) {
+          await document.documentElement.requestFullscreen();
+        }
+      } catch (error) {
+        // Some mobile browsers only allow manual fullscreen.
+      }
+
+      try {
+        if (screen.orientation?.lock) {
+          await screen.orientation.lock("landscape");
+        }
+      } catch (error) {
+        // iOS Safari and many in-app browsers do not expose orientation lock.
+      }
+    }
 
     document.addEventListener("keydown", (event) => {
       if (event.key === "ArrowRight" || event.key === " ") showSlide(index + 1);
