@@ -1,7 +1,7 @@
 ﻿:root { --ink: #18231d; --muted: #5d665f; --line: #222; --soft: #f5f1e8; --green: #1f6f55; }
 * { box-sizing: border-box; }
 body { margin: 0; color: var(--ink); font-family: "Microsoft YaHei", "Trebuchet MS", sans-serif; background: #ddd; }
-.home-link { position: fixed; left: 14px; top: 14px; z-index: 5; color: white; background: var(--green); border-radius: 8px; padding: 10px 14px; font-size: 15px; font-weight: 900; text-decoration: none; box-shadow: 0 8px 20px rgba(0,0,0,0.16); }
+.home-link { position: fixed; left: max(18px, env(safe-area-inset-left)); top: max(18px, env(safe-area-inset-top)); z-index: 5; display: inline-flex; align-items: center; justify-content: center; min-height: 54px; min-width: 132px; color: white; background: var(--green); border: 3px solid white; border-radius: 999px; padding: 11px 20px; font-size: 19px; font-weight: 900; text-decoration: none; box-shadow: 0 12px 26px rgba(0,0,0,0.2); }
 .page { width: 210mm; min-height: 297mm; margin: 0 auto; background: white; padding: 13mm 14mm; }
 header { display: flex; justify-content: space-between; gap: 20px; border-bottom: 3px solid var(--ink); padding-bottom: 8px; margin-bottom: 12px; }
 h1 { margin: 0; font-size: 28px; line-height: 1.1; }
