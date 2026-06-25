@@ -365,7 +365,7 @@
       .slide {
         height: auto;
         min-height: calc(100vh - 28px);
-        padding: 28px 22px 92px;
+        padding: 96px 22px 92px;
       }
 
       .word-grid,
@@ -401,6 +401,21 @@
 
       .landscape-help.dismissed {
         display: none;
+      }
+
+      .deck {
+        padding-top: calc(82px + env(safe-area-inset-top));
+      }
+
+      .slide {
+        min-height: calc(100svh - 96px - env(safe-area-inset-top));
+        padding-top: 94px;
+      }
+
+      .hint {
+        top: 76px;
+        left: 22px;
+        right: auto;
       }
     }
 

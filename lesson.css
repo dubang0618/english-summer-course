@@ -131,7 +131,7 @@ button.secondary { background: white; color: var(--ink); border: 2px solid var(-
 @media (max-width: 820px) {
   body { overflow: auto; }
   .deck { min-height: 100vh; padding: 14px; }
-  .slide { height: auto; min-height: calc(100vh - 28px); padding: 28px 22px 92px; }
+  .slide { height: auto; min-height: calc(100vh - 28px); padding: 96px 22px 92px; }
   .word-grid, .dialogue { grid-template-columns: 1fr; }
   .controls { left: 14px; right: 14px; bottom: 14px; }
   button { font-size: 16px; padding: 10px 12px; }
@@ -140,6 +140,9 @@ button.secondary { background: white; color: var(--ink); border: 2px solid var(-
 @media (orientation: portrait) and (max-width: 920px) {
   .landscape-help { display: grid; }
   .landscape-help.dismissed { display: none; }
+  .deck { padding-top: calc(82px + env(safe-area-inset-top)); }
+  .slide { min-height: calc(100svh - 96px - env(safe-area-inset-top)); padding-top: 94px; }
+  .hint { top: 76px; left: 22px; right: auto; }
 }
 @media (orientation: landscape) and (max-height: 620px) {
   body { overflow: hidden; }
