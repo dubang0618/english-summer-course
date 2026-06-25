@@ -160,6 +160,70 @@
       gap: 10px;
     }
 
+    .weeks {
+      margin-top: 22px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .week-card {
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 16px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .week-card.active {
+      background: var(--paper);
+      border: 2px solid var(--green);
+      box-shadow: var(--shadow);
+    }
+
+    .week-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .week-title {
+      display: grid;
+      gap: 4px;
+    }
+
+    .week-title strong {
+      font-size: 21px;
+      color: var(--ink);
+    }
+
+    .week-title span {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    .week-status {
+      flex: 0 0 auto;
+      color: white;
+      background: var(--green);
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-size: 13px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .week-card.planned .week-status {
+      color: var(--muted);
+      background: rgba(98, 107, 100, 0.12);
+    }
+
+    .week-card .days {
+      margin-top: 2px;
+    }
+
     .day-row {
       display: flex;
       justify-content: space-between;
@@ -191,6 +255,11 @@
       white-space: nowrap;
     }
 
+    .week-grid {
+      display: grid;
+      gap: 12px;
+    }
+
     footer {
       color: var(--muted);
       font-size: 13px;
@@ -208,6 +277,10 @@
       .actions {
         align-self: stretch;
         align-content: center;
+      }
+
+      .week-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
   </style>
@@ -252,13 +325,49 @@
       </ol>
     </section>
 
-    <section class="days" aria-label="课程列表">
-      <div class="day-row"><strong>Day 1 Hello</strong><span class="day-actions"><a href="day01-hello-tv.html">课件</a><a href="day01-hello-worksheet.html">学习单</a></span></div>
-      <div class="day-row"><strong>Day 2 A B C</strong><span class="day-actions"><a href="day02-abc-tv.html">课件</a><a href="day02-abc-worksheet.html">学习单</a></span></div>
-      <div class="day-row"><strong>Day 3 H to N</strong><span class="day-actions"><a href="day03-h-to-n-tv.html">课件</a><a href="day03-h-to-n-worksheet.html">学习单</a></span></div>
-      <div class="day-row"><strong>Day 4 O to T</strong><span class="day-actions"><a href="day04-o-to-t-tv.html">课件</a><a href="day04-o-to-t-worksheet.html">学习单</a></span></div>
-      <div class="day-row"><strong>Day 5 U to Z</strong><span class="day-actions"><a href="day05-u-to-z-tv.html">课件</a><a href="day05-u-to-z-worksheet.html">学习单</a></span></div>
-      <div class="day-row"><strong>Day 6 Review</strong><span class="day-actions"><a href="day06-review-tv.html">课件</a><a href="day06-review-worksheet.html">学习单</a></span></div>
+    <section class="weeks" aria-label="选择学习周">
+      <h3>选择学习周</h3>
+      <article class="week-card active">
+        <div class="week-head">
+          <div class="week-title">
+            <strong>第一周：字母和开口说</strong>
+            <span>目标：认识 26 个字母，会打招呼，会说自己的名字。</span>
+          </div>
+          <span class="week-status">已开放</span>
+        </div>
+        <div class="days" aria-label="第一周课程列表">
+          <div class="day-row"><strong>Day 1 Hello</strong><span class="day-actions"><a href="day01-hello-tv.html">课件</a><a href="day01-hello-worksheet.html">学习单</a></span></div>
+          <div class="day-row"><strong>Day 2 A B C</strong><span class="day-actions"><a href="day02-abc-tv.html">课件</a><a href="day02-abc-worksheet.html">学习单</a></span></div>
+          <div class="day-row"><strong>Day 3 H to N</strong><span class="day-actions"><a href="day03-h-to-n-tv.html">课件</a><a href="day03-h-to-n-worksheet.html">学习单</a></span></div>
+          <div class="day-row"><strong>Day 4 O to T</strong><span class="day-actions"><a href="day04-o-to-t-tv.html">课件</a><a href="day04-o-to-t-worksheet.html">学习单</a></span></div>
+          <div class="day-row"><strong>Day 5 U to Z</strong><span class="day-actions"><a href="day05-u-to-z-tv.html">课件</a><a href="day05-u-to-z-worksheet.html">学习单</a></span></div>
+          <div class="day-row"><strong>Day 6 Review</strong><span class="day-actions"><a href="day06-review-tv.html">课件</a><a href="day06-review-worksheet.html">学习单</a></span></div>
+        </div>
+      </article>
+
+      <div class="week-grid">
+        <article class="week-card planned">
+          <div class="week-head"><div class="week-title"><strong>第二周：自然拼读入门</strong><span>字母发音、短元音、简单拼读。</span></div><span class="week-status">规划中</span></div>
+        </article>
+        <article class="week-card planned">
+          <div class="week-head"><div class="week-title"><strong>第三周：核心句型</strong><span>I am / This is / I have / I like。</span></div><span class="week-status">规划中</span></div>
+        </article>
+        <article class="week-card planned">
+          <div class="week-head"><div class="week-title"><strong>第四周：生活主题词汇</strong><span>家庭、颜色、数字、文具、食物。</span></div><span class="week-status">规划中</span></div>
+        </article>
+        <article class="week-card planned">
+          <div class="week-head"><div class="week-title"><strong>第五周：初中衔接语法</strong><span>be 动词、a/an、单复数、疑问句。</span></div><span class="week-status">规划中</span></div>
+        </article>
+        <article class="week-card planned">
+          <div class="week-head"><div class="week-title"><strong>第六周：短文阅读</strong><span>每天一篇小短文，练关键词和理解。</span></div><span class="week-status">规划中</span></div>
+        </article>
+        <article class="week-card planned">
+          <div class="week-head"><div class="week-title"><strong>第七周：听说展示</strong><span>30 秒到 1 分钟英文表达训练。</span></div><span class="week-status">规划中</span></div>
+        </article>
+        <article class="week-card planned">
+          <div class="week-head"><div class="week-title"><strong>第八周：综合复习</strong><span>词汇、句型、阅读、口语展示总复习。</span></div><span class="week-status">规划中</span></div>
+        </article>
+      </div>
     </section>
 
     <footer>
