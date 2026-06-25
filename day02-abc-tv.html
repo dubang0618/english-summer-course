@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 2 A B C - 电视投屏课</title>
+  <link rel="stylesheet" href="lesson.css">
+</head>
+<body>
+  <aside class="landscape-help" id="landscapeHelp" aria-label="landscape prompt">
+    <div class="landscape-card">
+      <div class="phone-icon" aria-hidden="true"></div>
+      <strong>请把手机横过来</strong>
+      <span>横屏后再投到电视，课件会更大、更清楚。</span>
+      <button id="startLandscape" type="button">全屏横屏上课</button>
+      <button class="secondary" id="dismissLandscape" type="button">先继续</button>
+    </div>
+  </aside>
+
+  <main class="deck">
+    <section class="slide active">
+      <div class="hint">按空格/方向键翻页</div>
+      <div class="content">
+        <div class="topline">Day 2 Mission</div>
+        <h1>A B C</h1>
+        <p>今天的任务：会读并写 A 到 G。</p>
+        <div class="mission-card">
+          <div class="mission-line">读 A 到 G，并说：I can read A.</div>
+          <p>最后要站起来说给家长听。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="hint">点击单词可播放发音</div>
+      <div class="content">
+        <div class="topline">Today's Words</div>
+        <div class="word-grid">
+          <div class="word-card" data-say="A" data-audio="audio/day02/a.wav">A a<br>字母A</div>
+          <div class="word-card" data-say="B" data-audio="audio/day02/b.wav">B b<br>字母B</div>
+          <div class="word-card" data-say="C" data-audio="audio/day02/c.wav">C c<br>字母C</div>
+          <div class="word-card" data-say="D" data-audio="audio/day02/d.wav">D d<br>字母D</div>
+          <div class="word-card" data-say="E" data-audio="audio/day02/e.wav">E e<br>字母E</div>
+          <div class="word-card" data-say="F" data-audio="audio/day02/f.wav">F f<br>字母F</div>
+          <div class="word-card" data-say="G" data-audio="audio/day02/g.wav">G g<br>字母G</div>
+          <div class="word-card" data-say="apple" data-audio="audio/day02/apple.wav">apple<br>苹果</div>
+          <div class="word-card" data-say="bag" data-audio="audio/day02/bag.wav">bag<br>书包</div>
+          <div class="word-card" data-say="cat" data-audio="audio/day02/cat.wav">cat<br>猫</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="hint">点击句子可播放发音</div>
+      <div class="content">
+        <div class="topline">Listen and Repeat</div>
+        <div class="phrase-list">
+          <div class="phrase" data-say="This is A." data-audio="audio/day02/this-is-a.wav"><strong>This is A.</strong><span>这是 A。</span></div>
+          <div class="phrase" data-say="I can read A." data-audio="audio/day02/i-can-read-a.wav"><strong>I can read A.</strong><span>我会读 A。</span></div>
+          <div class="phrase" data-say="I can write A." data-audio="audio/day02/i-can-write-a.wav"><strong>I can write A.</strong><span>我会写 A。</span></div>
+          <div class="phrase" data-say="This is my bag." data-audio="audio/day02/this-is-my-bag.wav"><strong>This is my bag.</strong><span>这是我的书包。</span></div>
+          <div class="phrase" data-say="A is for apple." data-audio="audio/day02/a-is-for-apple.wav"><strong>A is for apple.</strong><span>A 代表 apple。</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="content">
+        <div class="topline">Mini Dialogue</div>
+        <div class="dialogue">
+          <div class="bubble" data-say="This is A." data-audio="audio/day02/this-is-a.wav">
+            <small>A</small>
+            This is A.
+          </div>
+          <div class="bubble" data-say="I can read A." data-audio="audio/day02/i-can-read-a.wav">
+            <small>B</small>
+            I can read A.
+          </div>
+        </div>
+        <p>换成自己的名字或真实物品，和家长练一遍。</p>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="content">
+        <div class="topline">Mini Challenge</div>
+        <h2>读 A 到 G，并说：I can read A.</h2>
+        <p>先听，再跟读，最后自己说出来。</p>
+        <div class="mission-card">
+          <div class="mission-line">1. 读10个词</div>
+          <div class="mission-line">2. 读5个句子</div>
+          <div class="mission-line">3. 完成今日小舞台</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="controls" aria-label="课件控制">
+    <button class="secondary" id="prev">上一页</button>
+    <button class="secondary" id="fullscreen">全屏横屏</button>
+    <div class="counter" id="counter">1 / 5</div>
+    <button id="next">下一页</button>
+  </nav>
+
+  <script src="lesson.js"></script>
+</body>
+</html>

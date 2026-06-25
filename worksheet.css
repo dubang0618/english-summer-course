@@ -1,0 +1,24 @@
+﻿:root { --ink: #18231d; --muted: #5d665f; --line: #222; --soft: #f5f1e8; --green: #1f6f55; }
+* { box-sizing: border-box; }
+body { margin: 0; color: var(--ink); font-family: "Microsoft YaHei", "Trebuchet MS", sans-serif; background: #ddd; }
+.page { width: 210mm; min-height: 297mm; margin: 0 auto; background: white; padding: 13mm 14mm; }
+header { display: flex; justify-content: space-between; gap: 20px; border-bottom: 3px solid var(--ink); padding-bottom: 8px; margin-bottom: 12px; }
+h1 { margin: 0; font-size: 28px; line-height: 1.1; }
+.meta { min-width: 78mm; font-size: 14px; line-height: 2; }
+.mission { margin: 12px 0; padding: 10px 12px; border: 2px solid var(--ink); background: var(--soft); font-size: 18px; font-weight: 700; }
+h2 { margin: 13px 0 8px; font-size: 18px; color: var(--green); border-bottom: 1px solid #bbb; padding-bottom: 4px; }
+table { width: 100%; border-collapse: collapse; font-size: 15px; }
+th, td { border: 1.5px solid var(--line); padding: 7px 8px; text-align: left; vertical-align: middle; }
+th { background: var(--soft); font-weight: 800; }
+.copy-line { border: 1.5px solid var(--line); min-height: 31px; margin-bottom: 8px; display: grid; grid-template-columns: 54mm 1fr; align-items: center; font-size: 17px; }
+.copy-line strong { padding-left: 10px; }
+.writing { border-left: 1.5px solid var(--line); height: 100%; min-height: 31px; }
+.exercise-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; font-size: 16px; }
+.box { border: 1.5px solid var(--line); padding: 9px; min-height: 47px; }
+.checklist { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px 14px; font-size: 15px; }
+.check { border: 1.5px solid var(--line); padding: 8px; }
+.small { color: var(--muted); font-size: 13px; }
+.signature { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 12px; font-size: 15px; }
+.signature div { border-bottom: 1.5px solid var(--ink); min-height: 24px; }
+@page { size: A4; margin: 0; }
+@media print { body { background: white; } .page { width: auto; min-height: auto; margin: 0; padding: 11mm 13mm; } }

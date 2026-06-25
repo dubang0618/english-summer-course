@@ -177,9 +177,18 @@
       color: var(--ink);
     }
 
-    .locked {
-      color: var(--muted);
-      font-weight: 800;
+    .day-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      font-weight: 900;
+    }
+
+    .day-actions a {
+      color: var(--green);
+      text-decoration: none;
+      white-space: nowrap;
     }
 
     footer {
@@ -244,12 +253,12 @@
     </section>
 
     <section class="days" aria-label="课程列表">
-      <div class="day-row"><strong>Day 1 Hello</strong><span>已开放</span></div>
-      <div class="day-row"><strong>Day 2 A B C</strong><span class="locked">待开放</span></div>
-      <div class="day-row"><strong>Day 3 H to N</strong><span class="locked">待开放</span></div>
-      <div class="day-row"><strong>Day 4 O to T</strong><span class="locked">待开放</span></div>
-      <div class="day-row"><strong>Day 5 U to Z</strong><span class="locked">待开放</span></div>
-      <div class="day-row"><strong>Day 6 Review</strong><span class="locked">待开放</span></div>
+      <div class="day-row"><strong>Day 1 Hello</strong><span class="day-actions"><a href="day01-hello-tv.html">课件</a><a href="day01-hello-worksheet.html">学习单</a></span></div>
+      <div class="day-row"><strong>Day 2 A B C</strong><span class="day-actions"><a href="day02-abc-tv.html">课件</a><a href="day02-abc-worksheet.html">学习单</a></span></div>
+      <div class="day-row"><strong>Day 3 H to N</strong><span class="day-actions"><a href="day03-h-to-n-tv.html">课件</a><a href="day03-h-to-n-worksheet.html">学习单</a></span></div>
+      <div class="day-row"><strong>Day 4 O to T</strong><span class="day-actions"><a href="day04-o-to-t-tv.html">课件</a><a href="day04-o-to-t-worksheet.html">学习单</a></span></div>
+      <div class="day-row"><strong>Day 5 U to Z</strong><span class="day-actions"><a href="day05-u-to-z-tv.html">课件</a><a href="day05-u-to-z-worksheet.html">学习单</a></span></div>
+      <div class="day-row"><strong>Day 6 Review</strong><span class="day-actions"><a href="day06-review-tv.html">课件</a><a href="day06-review-worksheet.html">学习单</a></span></div>
     </section>
 
     <footer>
