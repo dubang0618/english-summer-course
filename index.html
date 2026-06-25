@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>暑假英语学习</title>
+  <style>
+    :root {
+      --bg: #f2eee4;
+      --ink: #17211b;
+      --muted: #626b64;
+      --green: #1f6f55;
+      --blue: #2f6f96;
+      --yellow: #f0c34f;
+      --paper: #fffaf0;
+      --line: #d5c7a8;
+      --shadow: 0 18px 48px rgba(39, 31, 19, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Trebuchet MS", "Microsoft YaHei", sans-serif;
+      background:
+        linear-gradient(140deg, rgba(31, 111, 85, 0.12), transparent 40%),
+        linear-gradient(230deg, rgba(240, 195, 79, 0.22), transparent 48%),
+        var(--bg);
+    }
+
+    .app {
+      width: min(960px, 100%);
+      margin: 0 auto;
+      min-height: 100vh;
+      padding: 28px 18px 38px;
+    }
+
+    header {
+      display: grid;
+      gap: 16px;
+      padding: 18px 0 22px;
+    }
+
+    h1,
+    h2,
+    p {
+      margin: 0;
+    }
+
+    h1 {
+      font-size: clamp(38px, 11vw, 78px);
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+
+    .sub {
+      color: var(--muted);
+      font-size: 19px;
+      line-height: 1.5;
+    }
+
+    .today {
+      background: var(--paper);
+      border: 2px solid rgba(23, 33, 27, 0.1);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 22px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .tag {
+      width: fit-content;
+      background: var(--yellow);
+      color: var(--ink);
+      border-radius: 6px;
+      padding: 7px 10px;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    h2 {
+      font-size: clamp(30px, 8vw, 50px);
+      line-height: 1.06;
+      letter-spacing: 0;
+    }
+
+    .mission {
+      border-left: 6px solid var(--green);
+      padding: 10px 0 10px 14px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    .actions {
+      display: grid;
+      gap: 12px;
+    }
+
+    .button {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      text-decoration: none;
+      color: white;
+      background: var(--ink);
+      border-radius: 8px;
+      padding: 17px 18px;
+      font-size: 18px;
+      font-weight: 900;
+      min-height: 62px;
+      box-shadow: 0 10px 24px rgba(23, 33, 27, 0.16);
+    }
+
+    .button.secondary {
+      color: var(--ink);
+      background: white;
+      border: 2px solid var(--line);
+      box-shadow: none;
+    }
+
+    .button.submit {
+      background: var(--green);
+    }
+
+    .arrow {
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    .panel {
+      margin-top: 18px;
+      background: rgba(255, 250, 240, 0.74);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+    }
+
+    .panel h3 {
+      margin: 0 0 12px;
+      font-size: 20px;
+    }
+
+    ol {
+      margin: 0;
+      padding-left: 22px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .days {
+      margin-top: 22px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .day-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.65);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px 16px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .day-row strong {
+      color: var(--ink);
+    }
+
+    .locked {
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    footer {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+      padding: 24px 4px 0;
+    }
+
+    @media (min-width: 760px) {
+      .today {
+        grid-template-columns: 1.1fr 0.9fr;
+        align-items: center;
+        padding: 34px;
+      }
+
+      .actions {
+        align-self: stretch;
+        align-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <header>
+      <h1>暑假英语学习</h1>
+      <p class="sub">打开今天的课程，手机横屏投到电视；学完后拍照、录音或视频提交打卡。</p>
+    </header>
+
+    <section class="today" aria-labelledby="today-title">
+      <div>
+        <div class="tag">今日课程</div>
+        <h2 id="today-title">Day 1: Hello</h2>
+        <p class="mission">任务：会打招呼，会读10个核心词，会说 “Hello. My name is ...”。</p>
+      </div>
+      <div class="actions">
+        <a class="button" href="day01-hello-tv.html">
+          <span>开始投屏课</span>
+          <span class="arrow">›</span>
+        </a>
+        <a class="button secondary" href="day01-hello-worksheet.html">
+          <span>打开打印学习单</span>
+          <span class="arrow">›</span>
+        </a>
+        <a class="button submit" href="https://docs.qq.com/form/page/DS1B0QWNUSHpyZU52#/fill" target="_blank" rel="noopener">
+          <span>提交今日打卡</span>
+          <span class="arrow">›</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h3>今天怎么做</h3>
+      <ol>
+        <li>手机打开本页，点“开始投屏课”。</li>
+        <li>手机开启屏幕镜像或无线投屏，投到电视。</li>
+        <li>跟读课件里的单词和句子。</li>
+        <li>完成打印学习单。</li>
+        <li>点“提交今日打卡”，上传学习单照片、朗读录音和小展示视频。</li>
+      </ol>
+    </section>
+
+    <section class="days" aria-label="课程列表">
+      <div class="day-row"><strong>Day 1 Hello</strong><span>已开放</span></div>
+      <div class="day-row"><strong>Day 2 A B C</strong><span class="locked">待开放</span></div>
+      <div class="day-row"><strong>Day 3 H to N</strong><span class="locked">待开放</span></div>
+      <div class="day-row"><strong>Day 4 O to T</strong><span class="locked">待开放</span></div>
+      <div class="day-row"><strong>Day 5 U to Z</strong><span class="locked">待开放</span></div>
+      <div class="day-row"><strong>Day 6 Review</strong><span class="locked">待开放</span></div>
+    </section>
+
+    <footer>
+      手机添加到主屏幕后，可以像APP一样打开。iPhone使用“分享 - 添加到主屏幕”，安卓浏览器通常在菜单里选择“添加到主屏幕”。
+    </footer>
+  </main>
+</body>
+</html>

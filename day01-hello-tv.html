@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 1 Hello - 电视投屏课</title>
+  <style>
+    :root {
+      --bg: #f4efe4;
+      --ink: #17211b;
+      --muted: #5f675f;
+      --green: #1f6f55;
+      --yellow: #f3c14b;
+      --blue: #2e6f9e;
+      --paper: #fffaf0;
+      --line: #d7c8a8;
+      --shadow: 0 22px 50px rgba(43, 32, 18, 0.16);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: "Trebuchet MS", "Microsoft YaHei", sans-serif;
+      background:
+        linear-gradient(115deg, rgba(31, 111, 85, 0.08), transparent 44%),
+        linear-gradient(245deg, rgba(243, 193, 75, 0.18), transparent 48%),
+        var(--bg);
+      overflow: hidden;
+    }
+
+    .deck {
+      width: 100vw;
+      height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 28px;
+    }
+
+    .slide {
+      display: none;
+      width: min(1180px, 100%);
+      height: min(690px, calc(100vh - 56px));
+      background: var(--paper);
+      border: 2px solid rgba(23, 33, 27, 0.1);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 42px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slide.active {
+      display: grid;
+      animation: enter 420ms ease both;
+    }
+
+    @keyframes enter {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .slide::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(23, 33, 27, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(23, 33, 27, 0.035) 1px, transparent 1px);
+      background-size: 34px 34px;
+      pointer-events: none;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 28px;
+      align-content: center;
+      height: 100%;
+    }
+
+    .topline {
+      color: var(--green);
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2 {
+      margin: 0;
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      font-size: clamp(64px, 8vw, 116px);
+    }
+
+    h2 {
+      font-size: clamp(48px, 6vw, 88px);
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(24px, 3vw, 34px);
+      line-height: 1.45;
+    }
+
+    .big-word {
+      font-size: clamp(78px, 10vw, 142px);
+      font-weight: 900;
+      color: var(--blue);
+      line-height: 0.95;
+    }
+
+    .word-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+
+    .word-card {
+      background: white;
+      border: 2px solid var(--line);
+      border-radius: 8px;
+      min-height: 110px;
+      display: grid;
+      place-items: center;
+      padding: 12px;
+      font-size: clamp(24px, 2.6vw, 34px);
+      font-weight: 800;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+    }
+
+    .word-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--green);
+      background: #f7fff8;
+    }
+
+    .phrase-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .phrase {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      background: white;
+      border: 2px solid var(--line);
+      border-radius: 8px;
+      padding: 18px 22px;
+      font-size: clamp(28px, 3.2vw, 44px);
+      font-weight: 850;
+      cursor: pointer;
+    }
+
+    .phrase span {
+      color: var(--muted);
+      font-size: clamp(18px, 2vw, 24px);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .dialogue {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .bubble {
+      background: white;
+      border: 3px solid var(--ink);
+      border-radius: 8px;
+      padding: 30px;
+      min-height: 210px;
+      display: grid;
+      gap: 18px;
+      align-content: center;
+      font-size: clamp(30px, 3.2vw, 46px);
+      font-weight: 900;
+    }
+
+    .bubble small {
+      color: var(--green);
+      font-size: 24px;
+      font-weight: 800;
+    }
+
+    .mission-card {
+      background: #17382d;
+      color: white;
+      border-radius: 8px;
+      padding: 34px;
+      display: grid;
+      gap: 18px;
+      border: 4px solid var(--yellow);
+    }
+
+    .mission-card p {
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    .mission-line {
+      font-size: clamp(34px, 4vw, 56px);
+      font-weight: 900;
+    }
+
+    .controls {
+      position: fixed;
+      left: 28px;
+      right: 28px;
+      bottom: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      z-index: 10;
+    }
+
+    button {
+      border: 0;
+      border-radius: 8px;
+      background: var(--ink);
+      color: white;
+      font: inherit;
+      font-size: 18px;
+      font-weight: 800;
+      padding: 12px 18px;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(23, 33, 27, 0.15);
+    }
+
+    button.secondary {
+      background: white;
+      color: var(--ink);
+      border: 2px solid var(--line);
+    }
+
+    .counter {
+      color: var(--muted);
+      font-size: 18px;
+      font-weight: 800;
+      background: rgba(255, 250, 240, 0.78);
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+    }
+
+    .hint {
+      position: absolute;
+      right: 28px;
+      top: 24px;
+      color: var(--muted);
+      font-size: 16px;
+      font-weight: 700;
+      z-index: 2;
+    }
+
+    @media (max-width: 820px) {
+      body {
+        overflow: auto;
+      }
+
+      .deck {
+        min-height: 100vh;
+        padding: 14px;
+      }
+
+      .slide {
+        height: auto;
+        min-height: calc(100vh - 28px);
+        padding: 28px 22px 92px;
+      }
+
+      .word-grid,
+      .dialogue {
+        grid-template-columns: 1fr;
+      }
+
+      .controls {
+        left: 14px;
+        right: 14px;
+        bottom: 14px;
+      }
+
+      button {
+        font-size: 16px;
+        padding: 10px 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="deck">
+    <section class="slide active">
+      <div class="hint">按空格/方向键翻页</div>
+      <div class="content">
+        <div class="topline">Day 1 Mission</div>
+        <h1>Hello!</h1>
+        <p>今天的任务：会打招呼，会说自己的名字。</p>
+        <div class="mission-card">
+          <div class="mission-line">Hello. My name is ______.</div>
+          <p>最后要站起来说给家长听。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="hint">点击单词可播放发音</div>
+      <div class="content">
+        <div class="topline">Look and Say</div>
+        <div class="big-word" data-say="Hello">Hello</div>
+        <p>看到别人时，可以说：Hello.</p>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="hint">点击单词可播放发音</div>
+      <div class="content">
+        <div class="topline">Today's Words</div>
+        <div class="word-grid">
+          <div class="word-card" data-say="hello">hello<br>你好</div>
+          <div class="word-card" data-say="hi">hi<br>嗨</div>
+          <div class="word-card" data-say="good">good<br>好的</div>
+          <div class="word-card" data-say="morning">morning<br>早晨</div>
+          <div class="word-card" data-say="I">I<br>我</div>
+          <div class="word-card" data-say="am">am<br>是</div>
+          <div class="word-card" data-say="name">name<br>名字</div>
+          <div class="word-card" data-say="my">my<br>我的</div>
+          <div class="word-card" data-say="you">you<br>你</div>
+          <div class="word-card" data-say="meet">meet<br>遇见</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="hint">点击句子可播放发音</div>
+      <div class="content">
+        <div class="topline">Listen and Repeat</div>
+        <div class="phrase-list">
+          <div class="phrase" data-say="Hello."><strong>Hello.</strong><span>你好。</span></div>
+          <div class="phrase" data-say="Hi."><strong>Hi.</strong><span>嗨。</span></div>
+          <div class="phrase" data-say="Good morning."><strong>Good morning.</strong><span>早上好。</span></div>
+          <div class="phrase" data-say="I am a student."><strong>I am a student.</strong><span>我是一名学生。</span></div>
+          <div class="phrase" data-say="My name is Tom."><strong>My name is ______.</strong><span>我的名字是……</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="content">
+        <div class="topline">Mini Dialogue</div>
+        <div class="dialogue">
+          <div class="bubble" data-say="Hello. My name is Tom.">
+            <small>A</small>
+            Hello.<br>My name is Tom.
+          </div>
+          <div class="bubble" data-say="Hi. My name is Lily. Nice to meet you.">
+            <small>B</small>
+            Hi.<br>My name is Lily.<br>Nice to meet you.
+          </div>
+        </div>
+        <p>换成自己的名字，和家长练一遍。</p>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="content">
+        <div class="topline">Change and Say</div>
+        <h2>My name is ______.</h2>
+        <p>把空格换成自己的名字，连续说3遍。</p>
+        <div class="phrase-list">
+          <div class="phrase" data-say="My name is Jack."><strong>My name is Jack.</strong><span>换名字</span></div>
+          <div class="phrase" data-say="My name is Lily."><strong>My name is Lily.</strong><span>换名字</span></div>
+          <div class="phrase" data-say="My name is Mike."><strong>My name is Mike.</strong><span>换名字</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="content">
+        <div class="topline">Parent Check</div>
+        <h2>今天过关任务</h2>
+        <div class="mission-card">
+          <div class="mission-line">1. 读10个词</div>
+          <div class="mission-line">2. 读5个句子</div>
+          <div class="mission-line">3. 站起来说：Hello. My name is ...</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="controls" aria-label="课件控制">
+    <button class="secondary" id="prev">上一页</button>
+    <div class="counter" id="counter">1 / 7</div>
+    <button id="next">下一页</button>
+  </nav>
+
+  <script>
+    const slides = Array.from(document.querySelectorAll(".slide"));
+    const counter = document.getElementById("counter");
+    let index = 0;
+
+    function showSlide(nextIndex) {
+      index = Math.max(0, Math.min(slides.length - 1, nextIndex));
+      slides.forEach((slide, slideIndex) => {
+        slide.classList.toggle("active", slideIndex === index);
+      });
+      counter.textContent = `${index + 1} / ${slides.length}`;
+    }
+
+    function speak(text) {
+      if (!("speechSynthesis" in window)) return;
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = "en-US";
+      utterance.rate = 0.78;
+      utterance.pitch = 1;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    document.getElementById("prev").addEventListener("click", () => showSlide(index - 1));
+    document.getElementById("next").addEventListener("click", () => showSlide(index + 1));
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowRight" || event.key === " ") showSlide(index + 1);
+      if (event.key === "ArrowLeft") showSlide(index - 1);
+    });
+
+    document.querySelectorAll("[data-say]").forEach((item) => {
+      item.addEventListener("click", () => speak(item.dataset.say));
+    });
+  </script>
+</body>
+</html>

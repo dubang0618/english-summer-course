@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 1 Hello - 打印学习单</title>
+  <style>
+    :root {
+      --ink: #18231d;
+      --muted: #5d665f;
+      --line: #222;
+      --soft: #f5f1e8;
+      --green: #1f6f55;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Microsoft YaHei", "Trebuchet MS", sans-serif;
+      background: #ddd;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background: white;
+      padding: 13mm 14mm;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      border-bottom: 3px solid var(--ink);
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 28px;
+      line-height: 1.1;
+    }
+
+    .meta {
+      min-width: 78mm;
+      font-size: 14px;
+      line-height: 2;
+    }
+
+    .mission {
+      margin: 12px 0;
+      padding: 10px 12px;
+      border: 2px solid var(--ink);
+      background: var(--soft);
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    h2 {
+      margin: 13px 0 8px;
+      font-size: 18px;
+      color: var(--green);
+      border-bottom: 1px solid #bbb;
+      padding-bottom: 4px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+
+    th,
+    td {
+      border: 1.5px solid var(--line);
+      padding: 7px 8px;
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    th {
+      background: var(--soft);
+      font-weight: 800;
+    }
+
+    .copy-line {
+      border: 1.5px solid var(--line);
+      min-height: 31px;
+      margin-bottom: 8px;
+      display: grid;
+      grid-template-columns: 54mm 1fr;
+      align-items: center;
+      font-size: 17px;
+    }
+
+    .copy-line strong {
+      padding-left: 10px;
+    }
+
+    .writing {
+      border-left: 1.5px solid var(--line);
+      height: 100%;
+      min-height: 31px;
+    }
+
+    .exercise-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 14px;
+      font-size: 16px;
+    }
+
+    .box {
+      border: 1.5px solid var(--line);
+      padding: 9px;
+      min-height: 47px;
+    }
+
+    .blank {
+      display: inline-block;
+      min-width: 54mm;
+      border-bottom: 1.5px solid var(--ink);
+      height: 18px;
+      vertical-align: baseline;
+    }
+
+    .checklist {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px 14px;
+      font-size: 15px;
+    }
+
+    .check {
+      border: 1.5px solid var(--line);
+      padding: 8px;
+    }
+
+    .small {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .signature {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+      margin-top: 12px;
+      font-size: 15px;
+    }
+
+    .signature div {
+      border-bottom: 1.5px solid var(--ink);
+      min-height: 24px;
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    @media print {
+      body {
+        background: white;
+      }
+
+      .page {
+        width: auto;
+        min-height: auto;
+        margin: 0;
+        padding: 11mm 13mm;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <div>
+        <h1>Day 1: Hello</h1>
+        <div class="small">暑假英语零基础衔接 | 今日主题：打招呼和介绍名字</div>
+      </div>
+      <div class="meta">
+        姓名：____________________<br>
+        日期：____________________
+      </div>
+    </header>
+
+    <section class="mission">
+      今日任务：会读10个词，会读5个句子，会说 “Hello. My name is ______.”
+    </section>
+
+    <section>
+      <h2>一、今日单词：读3遍，再写中文</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>English</th>
+            <th>中文</th>
+            <th>我会读</th>
+            <th>English</th>
+            <th>中文</th>
+            <th>我会读</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>hello</td><td></td><td>□</td><td>hi</td><td></td><td>□</td></tr>
+          <tr><td>good</td><td></td><td>□</td><td>morning</td><td></td><td>□</td></tr>
+          <tr><td>I</td><td></td><td>□</td><td>am</td><td></td><td>□</td></tr>
+          <tr><td>name</td><td></td><td>□</td><td>my</td><td></td><td>□</td></tr>
+          <tr><td>you</td><td></td><td>□</td><td>meet</td><td></td><td>□</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>二、读一读，抄一遍</h2>
+      <div class="copy-line"><strong>Hello.</strong><div class="writing"></div></div>
+      <div class="copy-line"><strong>Hi.</strong><div class="writing"></div></div>
+      <div class="copy-line"><strong>Good morning.</strong><div class="writing"></div></div>
+      <div class="copy-line"><strong>I am a student.</strong><div class="writing"></div></div>
+      <div class="copy-line"><strong>My name is ______.</strong><div class="writing"></div></div>
+    </section>
+
+    <section>
+      <h2>三、连一连</h2>
+      <div class="exercise-grid">
+        <div class="box">1. hello</div>
+        <div class="box">A. 我的</div>
+        <div class="box">2. my</div>
+        <div class="box">B. 你好</div>
+        <div class="box">3. name</div>
+        <div class="box">C. 早晨</div>
+        <div class="box">4. morning</div>
+        <div class="box">D. 名字</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>四、我会补全句子</h2>
+      <div class="box">1. Hello. My name is <span class="blank"></span>.</div>
+      <div class="box">2. I <span class="blank"></span> a student.</div>
+      <div class="box">3. Good <span class="blank"></span>.</div>
+    </section>
+
+    <section>
+      <h2>五、今日小舞台</h2>
+      <div class="box">
+        请站起来，对家长说3遍：<strong>Hello. My name is ______.</strong><br>
+        第1遍：□　　第2遍：□　　第3遍：□
+      </div>
+    </section>
+
+    <section>
+      <h2>六、家长验收</h2>
+      <div class="checklist">
+        <div class="check">□ 10个单词能读出来</div>
+        <div class="check">□ 5个句子能读出来</div>
+        <div class="check">□ 能说今日小舞台句子</div>
+        <div class="check">□ 学习单完成认真</div>
+      </div>
+      <div class="signature">
+        <span>今日评价：</span><div></div>
+        <span>家长签字：</span><div></div>
+        <span>用时：</span><div></div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
